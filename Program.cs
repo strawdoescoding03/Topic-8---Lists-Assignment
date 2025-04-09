@@ -13,10 +13,9 @@
 
             List<string> colour = new List<string>();
 
-            List<int> numbers = new List<int>();
 
             Console.WriteLine("How many colours do you have?");
-            while (!int.TryParse(Console.ReadLine(), out listSize) || listSize < 0)
+            while (!int.TryParse(Console.ReadLine(), out listSize) || listSize <= 0)
             {
                 Console.WriteLine("Please try again!");
             }
@@ -35,8 +34,10 @@
 
             //Assignment two
 
+            List<int> numbers = new List<int>();
+
             Console.WriteLine("How many numbers do you have?");
-            while (!int.TryParse(Console.ReadLine(), out listSize) || listSize < 0)
+            while (!int.TryParse(Console.ReadLine(), out listSize) || listSize <= 0)
             {
                 Console.WriteLine("Please try again!");
 
@@ -49,7 +50,6 @@
 
             }
 
-
             Console.WriteLine("What is your largest number?");
             while (!int.TryParse(Console.ReadLine(), out maxNum) || maxNum < minNum)
             {
@@ -57,10 +57,14 @@
             }
 
 
-            for (int i = minNum; i <= maxNum; i++)
+
+            for (int i = 0; i < listSize; i++)
             {
-                Console.WriteLine(numbers[generator.Next(numbers.Count)]);
+                numbers.Add(generator.Next(minNum, (maxNum + 1)));               
+
             }
+
+            Console.WriteLine(string.Join(",", numbers));
         }
     }
 }
